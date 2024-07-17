@@ -1,0 +1,10 @@
+extends layout
+block content
+  main.container.errors
+    .row.mt-5
+      .col-md-6
+        i.fas.fa-exclamation-circle
+      .col-md-6.my-auto
+        h1= error.message
+        h2= error.status
+        //- p=error.stack

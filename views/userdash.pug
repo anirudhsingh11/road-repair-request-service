@@ -1,0 +1,55 @@
+extends layout
+block content
+  p.text-right.alert.alert-secondary(role="alert")="Hello " + data.user.first_name  
+  main.container.mt-3
+    h1=data.first_name  
+    div.row
+      div.col-md-4.mb-3
+        div#list-tab.list-group(role="tablist")
+          a#list-generate-list.list-group-item.list-group-item-action.active(data-toggle="list" href="#list-generate" role="tab" aria-controls="generate") Generate Request            
+          a#list-view-list.list-group-item.list-group-item-action(data-toggle="list" href="#list-view" role="tab" aria-controls="view") View Request Status
+          a#list-changeprofile-list.list-group-item.list-group-item-action(data-toggle="list" href="#list-changeprofile" role="tab" aria-controls="changeprofile") Update Profile
+          a#list-lgout-list.list-group-item.list-group-item-action(href="/user/logout") Log Out
+      div.col-md-8.container.border.p-5
+        div#nav-tabContent.tab-content
+          div#list-generate.tab-pane.fade.show.active(role="tabpanel" aria-labelledby="list-generate-list")
+            h1 Generate Request
+            hr
+            p.alert.alert-danger(role="alert") Please point the place where you need Road Repairs
+            div(id="map" style="overflow: auto;width: 100%; height:400px;")
+            form(action="/request/generate", method="POST", class="my-3")
+              input(type="hidden", name="lat", value="", id="lat")
+              input(type="hidden", name="lng", value="", id="lng")                            
+              script(src="/javascripts/map.js")
+              script(async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsplp87HSqerPj9hPWbT1Zan7QnRXJJSo&callback=initMap")
+              button.btn.btn-primary Generate Request
+          div#list-view.tab-pane.fade.show(role="tabpanel" aria-labelledby="list-view-list")
+            h1 View Request Status
+            hr
+            p.alert.alert-danger(role="alert") Stages of Request are submitted, engineerAlloted, contractorAlloted, processing and completed!
+            div.container
+              each request in data.requests
+                h5= "Request Id: " + request._id
+                h5="Status: " + request.status
+                hr
+          div#list-changeprofile.tab-pane.fade.show(role="tabpanel" aria-labelledby="list-changeprofile-list")
+            h1 Update Profile
+            hr
+            p.alert.alert-danger(role="alert") If you change your email be sure to login with your updated email next time!
+            form(action="/user/update" method="POST")
+              div.form-group
+                label(for="fname") First Name
+                input#fname.form-control(type="text" name="fname" placeholder="First Name" value=data.user.first_name)
+              div.form-group
+                label(for="lname") Last Name
+                input#lname.form-control(type="text" name="lname" placeholder="Last Name" value=data.user.last_name)
+              div.form-group
+                label(for="password") Password
+                input#password.form-control(type="password" name="password" placeholder="Password" value=data.user.password)
+              div.form-group
+                label(for="email") Email
+                input#email.form-control(type="email" name="email" placeholder="abc@example.com" value=data.user.email)
+              div.form-group
+                label(for="mobile") Mobile
+                input#mobile.form-control(type="text" name="mobile" placeholder="Mobile" value=data.user.mobile)
+              button.btn.btn-primary(type="submit") Update Profile

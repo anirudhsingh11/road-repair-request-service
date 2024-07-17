@@ -1,0 +1,20 @@
+/* body {
+    background: #4d4c4c;
+    color: white;
+
+    background: #00c3ff;
+    background: -webkit-linear-gradient(to right, #ffff1c, #00c3ff);
+    background: linear-gradient(to right, #ffff1c, #00c3ff);
+} */
+
+img {
+    width: 100%;
+}
+
+/* FONTS */
+.fa-road {
+    font-size: 2rem;
+}
+.fa-exclamation-circle{
+    font-size: 300px;
+}
