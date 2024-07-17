@@ -1,0 +1,18 @@
+extends layout
+block content
+  main
+    .container
+      .row.mt-5
+        .col-md-7.mb-3
+          img(src="https://images.unsplash.com/photo-1495036019936-220b29b930ea?ixlib=rb-1.2.1&amp;" class="img-thumbnail")
+        .col-md-5.border.p-5
+          h1 Login
+          hr
+          form(action="/login" method="POST")
+            .form-group
+              label(for="username") Email address
+              input#username.form-control(type="email" name="email" placeholder="Enter email")
+            .form-group
+              label(for="password") Password
+              input#password.form-control(type="password" name="password" placeholder="Password")
+            button.btn.btn-primary(type="submit" class="d-inline-block") Submit

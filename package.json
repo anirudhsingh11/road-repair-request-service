@@ -1,0 +1,23 @@
+{
+  "name": "rrrs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "pop": "node ./populatedb.js"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "cookie-parser": "^1.4.6",
+    "debug": "~2.6.9",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.1.0",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.13.22",
+    "moongose": "^1.0.0",
+    "morgan": "~1.9.0",
+    "pug": "^2.0.4"
+  }
+}
