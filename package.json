@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "async": "^2.6.0",
+    "connect-mongodb-session": "^5.0.0",
     "cookie-parser": "^1.4.6",
     "debug": "~2.6.9",
     "dotenv": "^16.4.5",
