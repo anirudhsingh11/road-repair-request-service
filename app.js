@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var session = require("express-session");
+var MongoDBStore = require('connect-mongodb-session')(session);
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
@@ -34,7 +35,20 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: "kisikobatanamat", resave: false, saveUninitialized: false }));
+
+// Create a new instance of MongoDBStore
+const store = new MongoDBStore({
+  uri: mongoDB,
+  collection: 'sessions'
+});
+
+app.use(session({
+  secret: "kisikobatanamat",
+  resave: false,
+  saveUninitialized: false,
+  store: store // Use the MongoDBStore instance
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
