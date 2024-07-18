@@ -9,15 +9,17 @@ var session = require("express-session");
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var requestRouter = require('./routes/request');
-
 var app = express();
+require('dotenv').config();
 
-var mongoDB = 'mongodb://localhost:27017/rrs';  // Make sure your MongoDB database name is specified
+var mongoDB = process.env.MONGODB_URI || 'mongodb://localhost:27017/rrs';  // Use the correct database name
+
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 mongoose.Promise = global.Promise;
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function () {
