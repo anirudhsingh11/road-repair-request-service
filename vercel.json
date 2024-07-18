@@ -1,5 +1,18 @@
 {
+<<<<<<< HEAD
     "rewrites": [
         {"source": "/(.*)", "destination": "/"}
     ]
+=======
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/app.js" }
+  ]
+>>>>>>> c95a32b960f25afa25b177d0098e9e5c5c05ce4f
 }
